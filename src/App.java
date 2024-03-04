@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 import model.Carro;
@@ -21,6 +22,12 @@ public class App {
             int opcao = lerOpcao();
 
             switch (opcao) {
+                
+                case 0:
+                    System.out.println("Saindo do programa.");
+                    System.exit(0);
+                    break;
+                
                 case 1:
                     Aviao a = GerarVeiculoAleatorio.gerarAviao();
                     repositorio.adicionar(a);
@@ -58,24 +65,37 @@ public class App {
                     }
                     break;
 
-                case 0:
-                    System.out.println("Saindo do programa.");
-                    System.exit(0);
-                    break;
-
                 case 8:
                     System.out.println("quantidade de veiculos: " + repositorio.tamanho());
                     break;
+
+                case 9:
+                try{
+                    Veiculo veiculo = repositorio.localizarVeiculoMaiorDiaria();
+                    System.out.println("Veiculo com maior diaria: \n"+ veiculo+ "\n diaria valor: "+ CalcularDiaria.calcularDiaria(veiculo));
+                }catch(Exception e){
+                    System.err.println("Erro ao procurar pelo veiculo com maior diaria: \n"+ e.getMessage());
+                }
+                break;
+                case 10:
+                List<Carro> carros = repositorio.gerarListaPorTipo(Carro.class);
+                for(Carro c2 : carros){
+                    System.out.println(c2);
+                }
+                break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
+                    break;
 
             }
-/*             System.out.println("Continuar....");
-            scanner.next();
- */        }
+            /*
+             * System.out.println("Continuar....");
+             * scanner.next();
+             */ }
     }
 
     private static void exibirMenu() {
+        System.out.println("------------:");
         System.out.println("Menu:");
         System.out.println("1. Adicionar Avião");
         System.out.println("2. Adicionar Carro");
@@ -85,7 +105,11 @@ public class App {
         System.out.println("6. Listar Veiculos");
         System.out.println("7. Calcular Diaria por ID");
         System.out.println("8. Quantidade de veiculos cadastrados");
+        System.out.println("9. Procurar veiculo com maior diária");
+        System.out.println("10. Listar veiculos do tipo Carro");
         System.out.println("0. Sair");
+
+        System.out.println("------------:");
         System.out.print("Escolha uma opção: ");
     }
 

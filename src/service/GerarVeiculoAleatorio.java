@@ -18,7 +18,7 @@ public class GerarVeiculoAleatorio {
 
     public static Aviao gerarAviao() {
         return new Aviao(
-                gerarDoubleAleatorio(1000, 5000),
+                gerarDoubleAleatorio(100000, 500000),
                 gerarDoubleAleatorio(0, 400),
                 gerarInteiroAleatorio(100, 500)
 
@@ -90,5 +90,6 @@ public class GerarVeiculoAleatorio {
     private static int gerarInteiroAleatorio(int min, int max) {
         return random.nextInt(max - min + 1) + min;
     }
+
 
 }

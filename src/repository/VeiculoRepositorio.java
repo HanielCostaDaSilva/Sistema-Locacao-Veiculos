@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.abstractClass.Veiculo;
+import service.CalcularDiaria;
 
 public class VeiculoRepositorio {
     private List<Veiculo> veiculos = new ArrayList<>();
@@ -44,4 +45,39 @@ public class VeiculoRepositorio {
     public int tamanho(){
         return this.veiculos.size();
     }
+
+    /*Procura o veículo com a maior diária registrada */
+    public Veiculo localizarVeiculoMaiorDiaria() throws Exception{
+        if(this.veiculos.isEmpty()) throw new Exception("Sem veiculos"); 
+        
+        Veiculo veiculoMaiorDiaria = this.veiculos.get(0);
+
+        if(this.veiculos.size()==1) return veiculoMaiorDiaria;
+
+        double maiorDiaria = CalcularDiaria.calcularDiaria(veiculoMaiorDiaria);
+
+        for(Veiculo v : veiculos){
+
+            double diariaComparar = CalcularDiaria.calcularDiaria(v);
+            if (maiorDiaria < diariaComparar){
+                veiculoMaiorDiaria = v;
+                maiorDiaria = diariaComparar;
+
+            }
+        }
+
+        return veiculoMaiorDiaria;
+
+    }
+
+    public <T extends Veiculo> List<T> gerarListaPorTipo(Class<T> tipo) {
+        List<T> listaPorTipo = new ArrayList<>();
+        for (Veiculo veiculo : this.veiculos) {
+            if (tipo.isInstance(veiculo)) {
+                listaPorTipo.add(tipo.cast(veiculo));
+            }
+        }
+        return listaPorTipo;
+    }
+
 }

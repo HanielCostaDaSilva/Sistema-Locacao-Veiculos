@@ -14,7 +14,7 @@ public abstract class Veiculo {
     }
 
     public String toString() {
-        return "veiculo "+ id + ": Valor: " + valorCompra ;
+        return "veiculo "+ id + ":\n Valor: " + valorCompra ;
     }
 
     public boolean equals(Veiculo outroVeiculo) {
