@@ -6,16 +6,22 @@ public class Carro extends VeiculoTerrestre{
     
     private double autonomia;
 
+private double acrescimo= 0.02;
+
     public Carro(double valorCompra, Motor motor, String placa, double autonomia) {
         super( valorCompra, motor, placa);
         
         this.autonomia=autonomia;
     }
     
+
+    public double calcularDiaria() {
+        return this.getValorCompra() * acrescimo;
+    }
+
     public String toString() {
         return super.toString()+ "\n autonomia: "+ this.autonomia;
     }
-
 
 
     /**

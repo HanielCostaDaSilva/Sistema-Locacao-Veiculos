@@ -5,6 +5,8 @@ import model.abstractClass.VeiculoTerrestre;
 public class Onibus  extends VeiculoTerrestre{
     
     private int quantPassageiro;
+    private double acrescimoQuantPassageiro = 100;
+    private double acrescimo = 0.04;
 
     public Onibus(double valorCompra, Motor motor, String placa, int quantPassageiro) {
         super( valorCompra, motor, placa);
@@ -24,6 +26,11 @@ public class Onibus  extends VeiculoTerrestre{
      */
     public void setQuantPassageiro(int quantPassageiro) {
         this.quantPassageiro = quantPassageiro;
+    }
+
+
+    public double calcularDiaria() {
+        return (this.quantPassageiro * acrescimoQuantPassageiro ) + (acrescimo * this.getValorCompra());
     }
 
     @Override

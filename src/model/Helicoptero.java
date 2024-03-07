@@ -5,11 +5,19 @@ import model.abstractClass.VeiculoAereo;
 public class Helicoptero extends VeiculoAereo{
 
     private int quantRotores;
-    
+
+    private double acrescimo = 0.1;
+
+
     public Helicoptero( double valorCompra, double tempoVoo, int quantRotores) {
         super(valorCompra, tempoVoo);
         this.quantRotores = quantRotores;
         
+    }
+
+    
+    public double calcularDiaria() {
+        return this.quantRotores * (acrescimo * this.getValorCompra());
     }
 
     public  String toString() {

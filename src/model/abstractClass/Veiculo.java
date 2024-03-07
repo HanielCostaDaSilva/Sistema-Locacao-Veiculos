@@ -13,6 +13,8 @@ public abstract class Veiculo {
 
     }
 
+    public abstract double calcularDiaria();
+
     public String toString() {
         return "veiculo "+ id + ":\n Valor: " + valorCompra ;
     }
@@ -34,5 +36,6 @@ public abstract class Veiculo {
     public double getValorCompra() {
         return valorCompra;
     }
+
 
 }

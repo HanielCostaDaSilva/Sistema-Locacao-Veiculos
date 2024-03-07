@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.abstractClass.Veiculo;
-import service.CalcularDiaria;
 
 public class VeiculoRepositorio {
     private List<Veiculo> veiculos = new ArrayList<>();
@@ -54,11 +53,11 @@ public class VeiculoRepositorio {
 
         if(this.veiculos.size()==1) return veiculoMaiorDiaria;
 
-        double maiorDiaria = CalcularDiaria.calcularDiaria(veiculoMaiorDiaria);
+        double maiorDiaria = veiculoMaiorDiaria.calcularDiaria();
 
         for(Veiculo v : veiculos){
 
-            double diariaComparar = CalcularDiaria.calcularDiaria(v);
+            double diariaComparar = v.calcularDiaria();
             if (maiorDiaria < diariaComparar){
                 veiculoMaiorDiaria = v;
                 maiorDiaria = diariaComparar;

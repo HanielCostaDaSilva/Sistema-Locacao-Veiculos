@@ -13,6 +13,10 @@ public class Aviao extends VeiculoAereo {
     }
 
 
+    public double calcularDiaria() {
+        return 0.2 * this.getValorCompra() + 1000 * this.velocidadeCruzeiro;
+    }
+
     public  String toString() {
 
         return super.toString()+ "\nVelocidade Cruzeiro: "+this.velocidadeCruzeiro;

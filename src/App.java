@@ -8,7 +8,6 @@ import model.Moto;
 import model.Onibus;
 import model.abstractClass.Veiculo;
 import repository.VeiculoRepositorio;
-import service.CalcularDiaria;
 import service.GerarVeiculoAleatorio;
 
 public class App {
@@ -57,7 +56,7 @@ public class App {
                     int idBuscado = lerID();
                     try {
                         Veiculo v = repositorio.localizar(idBuscado);
-                        System.out.println("o preço da diária é: R$ " + CalcularDiaria.calcularDiaria(v));
+                        System.out.println("o preço da diária é: R$ " + v.calcularDiaria());
                     } catch (Exception e) {
 
                         System.err.println("Não foi possível calcular a diaria,\n ocorreu o seguinte erro: ");
@@ -72,7 +71,7 @@ public class App {
                 case 9:
                 try{
                     Veiculo veiculo = repositorio.localizarVeiculoMaiorDiaria();
-                    System.out.println("Veiculo com maior diaria: \n"+ veiculo+ "\n diaria valor: "+ CalcularDiaria.calcularDiaria(veiculo));
+                    System.out.println("Veiculo com maior diaria: \n"+ veiculo+ "\n diaria valor: "+ veiculo.calcularDiaria());
                 }catch(Exception e){
                     System.err.println("Erro ao procurar pelo veiculo com maior diaria: \n"+ e.getMessage());
                 }
